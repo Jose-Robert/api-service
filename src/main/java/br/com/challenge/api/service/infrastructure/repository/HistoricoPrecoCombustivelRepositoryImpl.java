@@ -26,19 +26,19 @@ public class HistoricoPrecoCombustivelRepositoryImpl implements HistoricoPrecoCo
 	private EntityManager manager;
 
 	@Override
-	public Page<HistoricoPrecoCombustivel> filtrar(HistoricoPrecoCombustivelFilter historicoPrecoCombustivelFilter, Pageable pageable) {
-
+	public Page<HistoricoPrecoCombustivel> filtrar(HistoricoPrecoCombustivelFilter HpcFilter, Pageable pageable) {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<HistoricoPrecoCombustivel> criteria = builder.createQuery(HistoricoPrecoCombustivel.class);
 		Root<HistoricoPrecoCombustivel> root = criteria.from(HistoricoPrecoCombustivel.class);
-
-		Predicate[] predicates = criarRestricoes(historicoPrecoCombustivelFilter, builder, root);
+		
+		//criar as restrições
+		Predicate[] predicates = criarRestricoes(HpcFilter, builder, root);
 		criteria.where(predicates);
-
+		
 		TypedQuery<HistoricoPrecoCombustivel> query = manager.createQuery(criteria);
 		adicionarRestricoesDePaginacao(query, pageable);
-
-		return new PageImpl<>(query.getResultList(), pageable, total(historicoPrecoCombustivelFilter));
+		
+		return new PageImpl<>(query.getResultList(), pageable, total(HpcFilter));
 	}
 
 	private Predicate[] criarRestricoes(HistoricoPrecoCombustivelFilter historicoPrecoCombustivelFilter, CriteriaBuilder builder,

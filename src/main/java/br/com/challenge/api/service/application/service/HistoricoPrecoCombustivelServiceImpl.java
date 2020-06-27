@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.challenge.api.service.domain.model.HistoricoPrecoCombustivel;
 import br.com.challenge.api.service.domain.service.HistoricoPrecoCombustivelService;
-import br.com.challenge.api.service.infrastructure.persistence.HistoricoPrecoCombustivelRepository;
+import br.com.challenge.api.service.infrastructure.repository.HistoricoPrecoCombustivelRepository;
 import lombok.extern.slf4j.Slf4j;
 
 

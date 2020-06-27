@@ -23,7 +23,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "T_Historico_Preco_Combustivel")
+@Table(name = "HistoricoPrecoCombustivel")
 public class HistoricoPrecoCombustivel extends BaseEntity<Long> {
 
 	private static final long serialVersionUID = 4077061097827678931L;

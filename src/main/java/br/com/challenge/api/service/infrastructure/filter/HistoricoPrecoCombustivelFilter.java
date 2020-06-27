@@ -1,5 +1,6 @@
 package br.com.challenge.api.service.infrastructure.filter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -43,9 +44,9 @@ public class HistoricoPrecoCombustivelFilter {
 	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataColetaAte;
 	
-	private Double valorCompra;
+	private BigDecimal valorCompra;
 	
-	private Double valorVenda;
+	private BigDecimal valorVenda;
 
 	private String unidadeMedida;
 

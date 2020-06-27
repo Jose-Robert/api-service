@@ -1,4 +1,4 @@
-package br.com.challenge.api.service.infrastructure.persistence;
+package br.com.challenge.api.service.infrastructure.repository;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,17 +11,16 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import br.com.challenge.api.service.domain.model.HistoricoPrecoCombustivel;
-import br.com.challenge.api.service.infrastructure.repository.HistoricoPrecoCombustivelRepositoryQuery;
 import br.com.challenge.api.service.presentation.dto.ValorMedioVendaECompra;
 
 @Repository
 public interface HistoricoPrecoCombustivelRepository extends JpaRepository<HistoricoPrecoCombustivel, Long>, HistoricoPrecoCombustivelRepositoryQuery {
 	
 	@Query(value = "SELECT avg(ValorVenda) FROM HistoricoPrecoCombustivel WHERE SiglaMunicipio = ?1", nativeQuery = true)
-	BigDecimal buscarPorValorVendaMunicipio(@Param("municipio") String municipio);
+	Double buscarPorValorVendaMunicipio(@Param("municipio") String municipio);
 
 	@Query(value = "SELECT avg(ValorCompra) FROM HistoricoPrecoCombustivel WHERE SiglaMunicipio = ?1", nativeQuery = true)
-	BigDecimal buscarPorValorCompraMunicipio(@Param("municipio") String municipio);
+	Double buscarPorValorCompraMunicipio(@Param("municipio") String municipio);
 	
     @Query(value = "SELECT hpc FROM HistoricoPrecoCombustivel hpc GROUP BY DataColeta")
     List<HistoricoPrecoCombustivel> findAllGroupByDataColeta();
@@ -35,10 +34,11 @@ public interface HistoricoPrecoCombustivelRepository extends JpaRepository<Histo
 
 	@Query(value = "SELECT trunc(SUM(hpc.ValorCompra)/ COUNT(hpc.*),2) " + "FROM HistoricoPrecoCombustivel hpc "
 			+ "where  Bandeira = :bandeira;", nativeQuery = true)
-	BigDecimal recuperarValorMedioCompraPorBandeira(@Param("bandeira") String bandeira);
+	Double recuperarValorMedioCompraPorBandeira(@Param("bandeira") String bandeira);
 
 	@Query(value = "SELECT trunc(SUM(hpc.ValorVenda)/ COUNT(hpc.*),2) " + "FROM HistoricoPrecoCombustivel hpc "
 			+ "where  Bandeira = :bandeira;", nativeQuery = true)
 	BigDecimal buscarPorValorVendaECompraBandeira(@Param("bandeira") String bandeira);
+
 
 }

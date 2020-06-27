@@ -81,12 +81,12 @@
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-jpamodelgen -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-jpamodelgen</artifactId>
-			<version>5.4.8.Final</version><!--$NO-MVN-MAN-VER$-->
-			<scope>provided</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-jpamodelgen</artifactId> -->
+<!-- 			<version>5.4.8.Final</version>$NO-MVN-MAN-VER$ -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
 		<!-- Hibernate Java 8 Support -->
 		<dependency>
 			<groupId>org.hibernate</groupId>

@@ -1,6 +1,5 @@
 package br.com.challenge.api.service.application.resource;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +24,7 @@ import br.com.challenge.api.service.application.event.RecursoCriadorEvent;
 import br.com.challenge.api.service.domain.model.HistoricoPrecoCombustivel;
 import br.com.challenge.api.service.domain.service.HistoricoPrecoCombustivelService;
 import br.com.challenge.api.service.infrastructure.filter.HistoricoPrecoCombustivelFilter;
-import br.com.challenge.api.service.infrastructure.persistence.HistoricoPrecoCombustivelRepository;
+import br.com.challenge.api.service.infrastructure.repository.HistoricoPrecoCombustivelRepository;
 import br.com.challenge.api.service.presentation.dto.ValorMedioVendaECompra;
 
 @RestController
@@ -60,12 +59,12 @@ public class HistoricoPrecoCombustivelResource {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/find/media/valor/compra/municipio", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public BigDecimal buscarPorValorCompra(@RequestParam(name = "municipio", required = true) String municipio) {
+	public Double buscarPorValorCompra(@RequestParam(name = "municipio", required = true) String municipio) {
 		return repository.buscarPorValorCompraMunicipio(municipio);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/find/media/valor/venda/municipio", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public BigDecimal buscarPorValorVenda(@RequestParam(name = "municipio", required = true) String municipio) {
+	public Double buscarPorValorVenda(@RequestParam(name = "municipio", required = true) String municipio) {
 		return repository.buscarPorValorVendaMunicipio(municipio);
 	}
 
